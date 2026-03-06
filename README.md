@@ -1,0 +1,1 @@
+# shakers-desafio-product-card-variantes
