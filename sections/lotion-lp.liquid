@@ -1,0 +1,61 @@
+{{"lotion-lp.css" | asset_url |  stylesheet_tag}}
+
+<section class="lotion-lp">
+    <div class="lp-header">
+        <h1>{{page.title}}</h1>
+        <div class="lp-content">{{page.content}}</div>
+    </div>
+
+    {% assign product = all_products[section.settings.featured_product] %}
+
+    {% if product %}
+        <article class="featured-product">
+            <figure class="featured-product__image">
+                <img src="{{product.featured_image |  image_url }}" alt="{{product.title}}" width="500" height="500">
+            </figure>
+
+            <div class="featured-product__info">
+                <h2>{{product.title}}</h2>
+                <p class="price">{{product.price | money}}</p>
+                <a class="button-buy" href="{{product.url}}">Comprar agora</a>
+            </div>
+        </article>
+        
+    {% endif %}
+
+    {%  assign collection = collections[section.settings.collection]  %}
+
+    {% if collection %}
+        <section class="collection">
+
+            {% for product in collection.products %}
+
+            <div class="collection__product-card">
+                <img src="{{product.featured_image |  image_url }}" alt="{{product.title}}" width="200" height="200">
+                <h3>{{product.title}}</h3>
+                <p class="collection__price">{{product.price | money }}</p>
+                <a class="collection__card-button" href="{{product.url}}">Ver produto</a>
+            </div>
+
+            {% endfor %}
+        </section>
+    {% endif %}
+</section>
+
+{%  schema  %} 
+    {
+        "name": "Frederico Loções",
+        "settings": [
+            {
+                "type": "product",
+                "id": "featured_product",
+                "label": "Produto principal"
+            },
+            {
+                "type": "collection",
+                "id": "collection",
+                "label": "Coleção de loções"
+            }
+        ]
+    }
+{% endschema %}
