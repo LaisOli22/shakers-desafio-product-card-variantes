@@ -1,0 +1,17 @@
+{% assign product = all_products['jogo-de-cama-listras'] %}
+
+<div class="product-grid">
+    {% render 'product-card-custom', product: product %}
+</div>
+
+{% schema %}
+{
+    "name": "Product Grid Custom",
+    "settings": [],
+    "presets": [{
+        "name": "Product Grid Custom"
+    }]
+
+    
+}
+{% endschema %}
