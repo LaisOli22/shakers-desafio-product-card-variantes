@@ -176,5 +176,4 @@ shopify theme dev
 https://github.com/LaisOli22/shakers-desafio-product-card-variantes/pull/1
 
 ### Link do Vídeo
-
-https://drive.google.com/file/d/1S3ZAaSi2VOR-TwW_18GqYf86nM4DfeRP/view?usp=sharing
+https://drive.google.com/file/d/1OCoSPWw2EnseZ2xBB4aXf5xcpnKvt7lu/view?usp=sharing
