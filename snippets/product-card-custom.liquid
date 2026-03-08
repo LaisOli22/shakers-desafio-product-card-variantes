@@ -1,0 +1,55 @@
+{{"product-card.css" | asset_url |  stylesheet_tag}}
+{{ 'metaobject-slider.css' |   asset_url |  stylesheet_tag }}
+<script src="{{ 'metaobject-slider.js' | asset_url }}" defer></script>
+
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+<div class="product-card" data-product-id="{{product.id}}">
+    <div class="swiper product-slider">
+        <div class="swiper-wrapper">
+
+            {% for image in product.images %}
+            <div class="swiper-slide">
+                <img 
+                src="{{ image | image_url: width: 500 }}"
+                alt="{{ product.title }}" width="auto" height="auto"
+                >
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+    </div>
+
+    <h2>{{ product.title }}</h2>
+
+    <p class="product-price">{{ product.variants.first.price | money }}</p>
+
+    <!-- Seleção de Cor -->
+    <div class="variant-group">
+        <p>Cor</p>
+        {% for value in product.options_by_name['Cor'].values %}
+            <button class="variant-option" data-option="Cor" data-value="{{value}}">{{value}}</button>
+        {% endfor %}
+    </div>
+
+    <!-- Seleção de Tamanho -->
+    <div class="variant-group">
+        <p>Tamanho</p>
+        {% for value in product.options_by_name['Tamanho'].values %}
+            <button class="variant-option" data-option="Tamanho" data-value="{{value}}">{{value}}</button>
+        {% endfor %}
+    </div>
+
+    <button class="add-to-cart">Adicionar ao carrinho</button>
+
+    <script type="application/json" class="product-variants">{{ product.variants | json }}</script>
+</div>
